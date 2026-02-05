@@ -1,0 +1,306 @@
+{
+  "name": "ide-ruff",
+  "main": "./lib/main",
+  "version": "0.1.0",
+  "description": "Python linting and formatting powered by Ruff LSP server",
+  "keywords": [
+    "ide",
+    "python",
+    "ruff",
+    "linter",
+    "formatter",
+    "languageserver",
+    "language-server-protocol"
+  ],
+  "repository": "https://github.com/asiloisad/pulsar-ide-ruff",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.21.0 <2.0.0"
+  },
+  "dependencies": {
+    "@savetheclocktower/atom-languageclient": "^1.17.11",
+    "which": "^3.0.1"
+  },
+  "enhancedScopes": [
+    "source.python"
+  ],
+  "activationHooks": [
+    "language-python:grammar-used",
+    "MagicPython:grammar-used",
+    "django-atom:grammar-used",
+    "atom-django:grammar-used"
+  ],
+  "activationCommands": {
+    "atom-workspace": [
+      "ide-ruff:restart-server",
+      "ide-ruff:lint-project",
+      "ide-ruff:toggle-noqa",
+      "ide-ruff:global-pyproject"
+    ]
+  },
+  "configSchema": {
+    "ruffExecutable": {
+      "title": "Ruff Executable",
+      "order": 1,
+      "type": "string",
+      "default": "ruff",
+      "description": "Path to the ruff executable. Leave as 'ruff' to use the one in your PATH."
+    },
+    "configuration": {
+      "title": "Configuration File",
+      "order": 2,
+      "type": "string",
+      "default": "",
+      "description": "Path to ruff.toml or pyproject.toml. Leave empty to auto-detect from project root."
+    },
+    "lineLength": {
+      "title": "Line Length",
+      "order": 3,
+      "type": "integer",
+      "default": 0,
+      "description": "Maximum line length for linting (E501) and formatting. Set to 0 to use value from config file (default: 88)."
+    },
+    "targetVersion": {
+      "title": "Target Python Version",
+      "order": 4,
+      "type": "string",
+      "default": "",
+      "enum": ["", "py38", "py39", "py310", "py311", "py312", "py313"],
+      "description": "Minimum Python version to target for syntax and feature checks. Leave empty to auto-detect or use config file."
+    },
+    "exclude": {
+      "title": "Exclude Patterns",
+      "order": 5,
+      "type": "array",
+      "default": [],
+      "items": { "type": "string" },
+      "description": "File/folder patterns to exclude from linting (e.g., \"venv/*\", \"**/migrations/*\"). Leave empty to use config file."
+    },
+    "lint": {
+      "title": "Lint",
+      "order": 6,
+      "type": "object",
+      "properties": {
+        "syntax": {
+          "title": "Show Syntax Errors",
+          "type": "boolean",
+          "default": true,
+          "order": 1,
+          "description": "Display Python syntax errors (invalid code). Disable if another package handles syntax errors."
+        },
+        "enable": {
+          "title": "Enable Linting",
+          "type": "boolean",
+          "default": true,
+          "order": 2,
+          "description": "Show lint diagnostics (errors and warnings) in the editor."
+        },
+        "preview": {
+          "title": "Preview Mode",
+          "type": "boolean",
+          "default": false,
+          "order": 3,
+          "description": "Enable unstable lint rules that are still in development."
+        },
+        "useNoqa": {
+          "title": "Use Noqa Comments",
+          "type": "boolean",
+          "default": true,
+          "order": 4,
+          "description": "Respect # noqa comments to suppress specific lint warnings. Disable to ignore noqa comments."
+        },
+        "select": {
+          "title": "Select Rules",
+          "type": "array",
+          "default": [],
+          "items": { "type": "string" },
+          "order": 5,
+          "description": "Rule codes to enable (replaces defaults): E, F, W, I, UP, etc. Leave empty to use config file."
+        },
+        "ignore": {
+          "title": "Ignore Rules",
+          "type": "array",
+          "default": [],
+          "items": { "type": "string" },
+          "order": 6,
+          "description": "Rule codes to disable (replaces config). Overrides selected rules."
+        },
+        "extendSelect": {
+          "title": "Extend Select Rules",
+          "type": "array",
+          "default": [],
+          "items": { "type": "string" },
+          "order": 7,
+          "description": "Additional rule codes to enable (extends config file, doesn't replace)."
+        },
+        "extendIgnore": {
+          "title": "Extend Ignore Rules",
+          "type": "array",
+          "default": [],
+          "items": { "type": "string" },
+          "order": 8,
+          "description": "Additional rule codes to disable (extends config file, doesn't replace)."
+        },
+        "fixable": {
+          "title": "Fixable Rules",
+          "type": "array",
+          "default": [],
+          "items": { "type": "string" },
+          "order": 9,
+          "description": "Rule codes that can be auto-fixed. Leave empty to allow all fixable rules."
+        },
+        "unfixable": {
+          "title": "Unfixable Rules",
+          "type": "array",
+          "default": [],
+          "items": { "type": "string" },
+          "order": 10,
+          "description": "Rule codes that should NOT be auto-fixed, even if they have fixes available."
+        }
+      }
+    },
+    "format": {
+      "title": "Format",
+      "order": 7,
+      "type": "object",
+      "properties": {
+        "preview": {
+          "title": "Preview Mode",
+          "type": "boolean",
+          "default": false,
+          "order": 1,
+          "description": "Enable unstable formatter features that are still in development."
+        },
+        "indentStyle": {
+          "title": "Indent Style",
+          "type": "string",
+          "default": "",
+          "enum": ["", "space", "tab"],
+          "order": 2,
+          "description": "Indentation style for formatting. Leave empty to use config file (default: space)."
+        },
+        "indentWidth": {
+          "title": "Indent Width",
+          "type": "integer",
+          "default": 0,
+          "order": 3,
+          "description": "Number of spaces per indentation level. Set to 0 to use config file (default: 4)."
+        },
+        "quoteStyle": {
+          "title": "Quote Style",
+          "type": "string",
+          "default": "",
+          "enum": ["", "single", "double"],
+          "order": 4,
+          "description": "Quote style for strings. Leave empty to use config file (default: double)."
+        }
+      }
+    },
+    "codeAction": {
+      "title": "Code Actions",
+      "order": 8,
+      "type": "object",
+      "properties": {
+        "fixViolation": {
+          "title": "Fix Violation",
+          "type": "object",
+          "properties": {
+            "enable": {
+              "title": "Enable",
+              "type": "boolean",
+              "default": true,
+              "description": "Show 'Quick Fix' action in intentions menu to auto-fix individual lint violations."
+            }
+          }
+        },
+        "disableRuleComment": {
+          "title": "Disable Rule Comment",
+          "type": "object",
+          "properties": {
+            "enable": {
+              "title": "Enable",
+              "type": "boolean",
+              "default": true,
+              "description": "Show 'Disable rule' action in intentions menu to add # noqa comments."
+            }
+          }
+        }
+      }
+    },
+    "organizeImports": {
+      "title": "Organize Imports",
+      "order": 9,
+      "type": "boolean",
+      "default": true,
+      "description": "Show 'Organize Imports' action in intentions menu. Sorts and groups imports (isort-compatible)."
+    },
+    "fixAll": {
+      "title": "Fix All",
+      "order": 10,
+      "type": "boolean",
+      "default": true,
+      "description": "Show 'Fix All' action in intentions menu. Auto-fixes all fixable lint violations in the file at once."
+    },
+    "debug": {
+      "title": "Debug Mode",
+      "order": 99,
+      "type": "boolean",
+      "default": false,
+      "description": "Log debug info to developer console (View > Developer > Toggle Developer Tools)."
+    }
+  },
+  "consumedServices": {
+    "atom-ide-busy-signal": {
+      "versions": {
+        "0.1.0": "consumeBusySignal"
+      }
+    },
+    "linter-indie": {
+      "versions": {
+        "2.0.0": "consumeLinterV2"
+      }
+    },
+    "datatip": {
+      "versions": {
+        "0.1.0": "consumeDatatip"
+      }
+    },
+    "signature-help": {
+      "versions": {
+        "0.1.0": "consumeSignatureHelp"
+      }
+    }
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "provideAutocomplete"
+      }
+    },
+    "code-highlight": {
+      "versions": {
+        "0.1.0": "provideCodeHighlight"
+      }
+    },
+    "code-format.range": {
+      "versions": {
+        "0.1.0": "provideCodeFormat"
+      }
+    },
+    "definitions": {
+      "versions": {
+        "0.1.0": "provideDefinitions"
+      }
+    },
+    "intentions:list": {
+      "versions": {
+        "1.0.0": "provideIntentionsList"
+      }
+    },
+    "outline-view": {
+      "versions": {
+        "0.1.0": "provideOutlines"
+      }
+    }
+  }
+}
