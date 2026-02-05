@@ -327,6 +327,16 @@
         "1.0.0": "provideIntentionsList"
       }
     },
+    "hover": {
+      "versions": {
+        "0.1.0": "provideHover"
+      }
+    },
+    "signature": {
+      "versions": {
+        "0.1.0": "provideSignature"
+      }
+    },
     "outline-view": {
       "versions": {
         "0.1.0": "provideOutlines"
