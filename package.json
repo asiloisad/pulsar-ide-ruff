@@ -271,6 +271,13 @@
       "default": true,
       "description": "Show 'Fix All' action in intentions menu. Auto-fixes all fixable lint violations in the file at once."
     },
+    "deleteOnOpen": {
+      "title": "Delete Project Lint on File Open",
+      "order": 98,
+      "type": "boolean",
+      "default": true,
+      "description": "Delete project-wide lint messages for a file when it is opened in the editor. Restart needed."
+    },
     "debug": {
       "title": "Debug Mode",
       "order": 99,

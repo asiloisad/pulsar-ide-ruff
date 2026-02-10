@@ -1,13 +1,11 @@
 # ide-ruff
 
-Python linting and formatting for Pulsar, powered by [Ruff](https://docs.astral.sh/ruff/) LSP server.
+Python linting for Pulsar, powered by [Ruff](https://docs.astral.sh/ruff/) LSP server.
 
 ## Features
 
 - **Fast linting** — Real-time diagnostics as you type
-- **Code actions** — Quick fixes, organize imports, disable rule comments
-- **Formatting** — Code formatting via Ruff formatter
-- **Hover info** — Documentation for lint rules on hover
+- **Hover info** — Documentation for lint rules on hover over error codes
 - **Project scan** — Lint entire project via command
 
 ## Installation
@@ -23,21 +21,6 @@ For command line use, ruff is installed with `pip install ruff`.
 Ruff supports over 800 lint [rules](https://docs.astral.sh/ruff/rules/), many of which are inspired by popular tools like Flake8, isort, pyupgrade, and others. Regardless of the rule's origin, Ruff re-implements every rule in Rust as a first-party feature.
 
 Ruff can attempt to automatically fix lint violations. List of rule codes to treat as eligible & ineligible can be set in package setting or in configuration file.
-
-## ide-ruff vs linter-ruff
-
-| Feature | ide-ruff | linter-ruff |
-|---------|----------|-------------|
-| Architecture | LSP server | CLI per-file |
-| Linting | Real-time as you type | On save/change |
-| Code actions | Quick fixes, organize imports | Fix all command |
-| Formatting | Built-in via LSP | Built-in via CLI |
-| Hover info | Rule documentation | - |
-| Autocomplete | - | - |
-| Project scan | Via command | Via command |
-| Performance | Fast (persistent server) | Fast (per invocation) |
-
-**Recommendation:** Use `ide-ruff` for IDE features (hover, code actions). Use `linter-ruff` if you prefer CLI-based linting or need custom severity mapping.
 
 ## Commands
 
