@@ -1,0 +1,16 @@
+'menu': [
+  {
+    label: 'Packages'
+    submenu: [
+      {
+        label: 'IDE Ruff'
+        submenu: [
+          { label: 'Restart Server', command: 'ide-ruff:restart-server' }
+          { label: 'Lint Project', command: 'ide-ruff:lint-project' }
+          { label: 'Toggle Noqa', command: 'ide-ruff:toggle-noqa' }
+          { label: 'Global Pyproject', command: 'ide-ruff:global-pyproject' }
+        ]
+      }
+    ]
+  }
+]
