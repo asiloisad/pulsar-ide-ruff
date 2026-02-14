@@ -2,7 +2,7 @@
   "name": "ide-ruff",
   "main": "./lib/main",
   "version": "0.2.2",
-  "description": "Python linting and formatting powered by Ruff LSP server",
+  "description": "Python linting for Pulsar, powered by Ruff LSP server",
   "keywords": [
     "ide",
     "python",
