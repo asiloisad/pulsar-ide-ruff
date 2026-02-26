@@ -39,12 +39,12 @@
     ]
   },
   "configSchema": {
-    "ruffExecutable": {
-      "title": "Ruff Executable",
+    "ruffCommand": {
+      "title": "Ruff Command",
       "order": 1,
       "type": "string",
       "default": "ruff",
-      "description": "Path to the ruff executable. Leave as 'ruff' to use the one in your PATH."
+      "description": "Command to run ruff. Can be a path or a multi-word command like `py -m ruff`. Leave as 'ruff' to use the one in your PATH."
     },
     "configuration": {
       "title": "Configuration File",
