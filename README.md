@@ -4,9 +4,9 @@ Python linting for Pulsar, powered by [Ruff](https://docs.astral.sh/ruff/) LSP s
 
 ## Features
 
-- **Fast linting** — Real-time diagnostics as you type
-- **Hover info** — Documentation for lint rules on hover over error codes
-- **Project scan** — Lint entire project via command
+- **Fast linting**: Real-time diagnostics as you type
+- **Hover info**: Documentation for lint rules on hover over error codes
+- **Project scan**: Lint entire project via command
 
 ## Installation
 
@@ -68,4 +68,4 @@ Enable **Debug Mode** in settings and check the developer console (View > Develo
 
 ## Contributing
 
-Got ideas to make this package better, found a bug, or want to help add new features? Just drop your thoughts on GitHub — any feedback's welcome!
+Got ideas to make this package better, found a bug, or want to help add new features? Just drop your thoughts on GitHub. Any feedback is welcome!
