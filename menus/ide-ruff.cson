@@ -6,7 +6,8 @@
         label: 'IDE Ruff'
         submenu: [
           { label: 'Restart Server', command: 'ide-ruff:restart-server' }
-          { label: 'Lint Project', command: 'ide-ruff:lint-project' }
+          { label: 'Lint Projects', command: 'ide-ruff:lint-projects' }
+          { label: 'Lint Selected', command: 'ide-ruff:lint-selected' }
           { label: 'Toggle Noqa', command: 'ide-ruff:toggle-noqa' }
           { label: 'Global Pyproject', command: 'ide-ruff:global-pyproject' }
         ]

@@ -27,7 +27,8 @@ Ruff can attempt to automatically fix lint violations. List of rule codes to tre
 Commands available in `atom-workspace`:
 
 - `ide-ruff:restart-server`: restart LSP server (apply config changes),
-- `ide-ruff:lint-project`: scan entire project for lint issues,
+- `ide-ruff:lint-projects`: scan entire project for lint issues,
+- `ide-ruff:lint-selected`: scan selected tree-view files or folders for lint issues,
 - `ide-ruff:toggle-noqa`: toggle config of noqa setting,
 - `ide-ruff:global-pyproject`: open ruff global config file.
 

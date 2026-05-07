@@ -33,7 +33,8 @@
   "activationCommands": {
     "atom-workspace": [
       "ide-ruff:restart-server",
-      "ide-ruff:lint-project",
+      "ide-ruff:lint-projects",
+      "ide-ruff:lint-selected",
       "ide-ruff:toggle-noqa",
       "ide-ruff:global-pyproject"
     ]
@@ -305,6 +306,11 @@
     "signature-help": {
       "versions": {
         "0.1.0": "consumeSignatureHelp"
+      }
+    },
+    "tree-view": {
+      "versions": {
+        "^1.0.0": "consumeTreeView"
       }
     }
   },
