@@ -279,9 +279,17 @@
       "default": true,
       "description": "Delete project-wide lint messages for a file when it is opened in the editor. Restart needed."
     },
+    "diagnosticDebounceMs": {
+      "title": "Diagnostic Debounce",
+      "order": 99,
+      "type": "integer",
+      "default": 300,
+      "minimum": 0,
+      "description": "Delay Ruff LSP diagnostic updates by this many milliseconds. Set to 0 to publish diagnostics immediately."
+    },
     "debug": {
       "title": "Debug Mode",
-      "order": 99,
+      "order": 100,
       "type": "boolean",
       "default": false,
       "description": "Log debug info to developer console (View > Developer > Toggle Developer Tools)."
