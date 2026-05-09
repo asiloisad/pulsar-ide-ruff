@@ -37,6 +37,7 @@ Commands available in `atom-workspace`:
 Ruff reads configuration from `pyproject.toml` or `ruff.toml` in your project root.
 
 **Example `pyproject.toml`:**
+
 ```toml
 [tool.ruff]
 line-length = 100
