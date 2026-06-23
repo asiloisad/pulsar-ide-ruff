@@ -12,16 +12,6 @@ Python linting for Pulsar, powered by [Ruff](https://docs.astral.sh/ruff/) LSP s
 
 To install `ide-ruff` search for [ide-ruff](https://web.pulsar-edit.dev/packages/ide-ruff) in the Install pane of the Pulsar settings or run `ppm install ide-ruff`. Alternatively, you can run `ppm install asiloisad/pulsar-ide-ruff` to install a package directly from the GitHub repository.
 
-## ruff
-
-A package ruff is an extremely fast Python linter, written in Rust. Ruff can be used to replace Flake8 (plus dozens of plugins), isort, pydocstyle, yesqa, eradicate, pyupgrade, and autoflake, all while executing tens or hundreds of times faster than any individual tool.
-
-For command line use, ruff is installed with `pip install ruff`.
-
-Ruff supports over 800 lint [rules](https://docs.astral.sh/ruff/rules/), many of which are inspired by popular tools like Flake8, isort, pyupgrade, and others. Regardless of the rule's origin, Ruff re-implements every rule in Rust as a first-party feature.
-
-Ruff can attempt to automatically fix lint violations. List of rule codes to treat as eligible & ineligible can be set in package setting or in configuration file.
-
 ## Commands
 
 Commands available in `atom-workspace`:
@@ -31,6 +21,16 @@ Commands available in `atom-workspace`:
 - `ide-ruff:lint-selected`: scan selected tree-view files or folders for lint issues,
 - `ide-ruff:toggle-noqa`: toggle config of noqa setting,
 - `ide-ruff:global-pyproject`: open ruff global config file.
+
+## ruff
+
+A package ruff is an extremely fast Python linter, written in Rust. Ruff can be used to replace Flake8 (plus dozens of plugins), isort, pydocstyle, yesqa, eradicate, pyupgrade, and autoflake, all while executing tens or hundreds of times faster than any individual tool.
+
+For command line use, ruff is installed with `pip install ruff`.
+
+Ruff supports over 800 lint [rules](https://docs.astral.sh/ruff/rules/), many of which are inspired by popular tools like Flake8, isort, pyupgrade, and others. Regardless of the rule's origin, Ruff re-implements every rule in Rust as a first-party feature.
+
+Ruff can attempt to automatically fix lint violations. List of rule codes to treat as eligible & ineligible can be set in package setting or in configuration file.
 
 ## Configuration
 
