@@ -12,7 +12,7 @@
     "languageserver",
     "language-server-protocol"
   ],
-  "repository": "https://github.com/asiloisad/pulsar-ide-ruff",
+  "repository": "https://github.com/asiloisad-pulsar/ide-ruff",
   "license": "MIT",
   "engines": {
     "atom": ">=1.21.0 <2.0.0"
