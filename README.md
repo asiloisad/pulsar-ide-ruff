@@ -10,7 +10,7 @@ Python linting for Pulsar, powered by [Ruff](https://docs.astral.sh/ruff/) LSP s
 
 ## Installation
 
-To install `ide-ruff` search for [ide-ruff](https://web.pulsar-edit.dev/packages/ide-ruff) in the Install pane of the Pulsar settings or run `ppm install ide-ruff`. Alternatively, you can run `ppm install asiloisad/pulsar-ide-ruff` to install a package directly from the GitHub repository.
+To install `ide-ruff` search for [ide-ruff](https://web.pulsar-edit.dev/packages/ide-ruff) in the Install pane of the Pulsar settings or run `ppm install ide-ruff`. Alternatively, you can run `ppm install asiloisad-pulsar/ide-ruff` to install a package directly from the GitHub repository.
 
 ## Commands
 
